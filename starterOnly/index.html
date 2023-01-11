@@ -29,8 +29,8 @@
     </div>
     </div>
   </div>
-    <main>
-      <div class="hero-section">
+    <main id="main">
+      <div class="hero-section" id="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
             Marathon national<br>
@@ -61,10 +61,10 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return false;"
             >
               <div
-                class="formData">
+                class="formData" id="firstDiv">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -75,7 +75,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" id="lastDiv">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -85,7 +85,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" id="emailDiv">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -95,7 +95,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" id="birthdateDiv">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -105,13 +105,13 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" id="quantityDiv">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData"  id="radioDiv">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,7 +181,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" id="checkboxDiv">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -211,6 +211,16 @@
           </div>
         </div>
       </div>
+      
+      <div class="bgroundSuccess">
+        <div class="content">
+          <p>"Merci ! Votre réservation a été reçue."</p>
+          <button class="closeBtnSuccess modal-btn">
+            OK
+          </button>
+        </div>
+      </div>
+
     </main>
     <footer>
       <p class="copyrights">

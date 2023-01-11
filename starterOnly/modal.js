@@ -9,15 +9,36 @@ function editNav() {
   }
 }
 
+const errorMessages = {
+	lastName: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+	firstName: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
+	email: "Veuillez entrer une adresse email valide.",
+	birthdate: "Vous devez entrer votre date de naissance.",
+	quantity: "Vous devez entrer une quantité correcte.",
+	radio: "Vous devez choisir une option.",
+	checkbox: "Vous devez vérifier que vous acceptez les termes et conditions.",
+};
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 
+const firstNameDiv = document.querySelector("#firstDiv");
+const lastNameDiv = document.querySelector("#lastDiv");
+const emailDiv = document.querySelector("#emailDiv");
+const birthdateDiv = document.querySelector("#birthdateDiv");
+const quantityDiv = document.querySelector("#quantityDiv");
+const radioDiv = document.querySelector("#radioDiv");
+const checkboxDiv = document.querySelector("#checkboxDiv");
+
+const main = document.querySelector("#main");
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  main.removeChild(document.querySelector(".success"))
 }
 
 // close modal form
@@ -56,17 +77,8 @@ function emailValidation() {
 // user birthdate to age conversion and validation
 
 function birthdateValidation() {
-  // birtdate value
-  let userDateInput = formSignup.birthdate.value;
-
-  // convert to DateFormat and calcDiff
-  let userBirthdate = new Date(userDateInput);
-  let diff = Date.now() - userBirthdate.getTime();
-
-  // final age calcul
-  let age = new Date(diff);
-  let finalAge = Math.abs(age.getUTCFullYear() - 1970);
-  return finalAge>=13;
+  let userDateInput = document.getElementById("birthdate").value;
+	if (userDateInput !== "") return true;
 }
 
 function quantityValidation() {
@@ -95,22 +107,61 @@ document
 	.addEventListener("click", function formValidation(event) {
 		event.preventDefault();
 		let isValid = true;
+    removeErrors();
 		if (!firstValidation()) {
 			isValid = false;
-		} else if (!lastValidation()) {
+      displayError(firstNameDiv,errorMessages.firstName)
+		} 
+    if (!lastValidation()) {
 			isValid = false;
-		} else if (!emailValidation()) {
+      displayError(lastNameDiv,errorMessages.lastName)
+		} 
+    if (!emailValidation()) {
 			isValid = false;
-		} else if (!birthdateValidation()) {
+      displayError(emailDiv,errorMessages.email)
+		} 
+    if (!birthdateValidation()) {
 			isValid = false;
-		} else if (!quantityValidation()) {
+      displayError(birthdateDiv,errorMessages.birthdate)
+		} 
+    if (!quantityValidation()) {
 			isValid = false;
-		} else if (!locationValidation()) {
+      displayError(quantityDiv,errorMessages.quantity)
+		} 
+    if (!locationValidation()) {
 			isValid = false;
-		} else if (!checkboxValidation()) {
+      displayError(radioDiv,errorMessages.radio)
+		} 
+    if (!checkboxValidation()) {
 			isValid = false;
+      displayError(checkboxDiv,errorMessages.checkbox)
 		}
 		if (isValid) {
-			formSignup.submit();
+      displaySuccess(main,"Merci ! Votre réservation a été reçue.")
+      closeModal();
+      validate();
 		}
 	});
+
+  function removeErrors(){
+    document.querySelectorAll(".error").forEach(el => el.remove());
+  }
+
+  function displayError(elt,textError){
+    let p = document.createElement("p");
+    p.innerHTML = textError
+    p.className = "error"
+    p.style.color = "red"
+    p.style.fontSize = "15px"
+    elt.appendChild(p)
+  }
+
+  function displaySuccess(elt, textSuccess){
+    let p = document.createElement("p");
+    p.innerHTML = textSuccess
+    p.className = "success"
+    p.style.color = "green"
+    p.style.fontSize = "15px"
+    p.style.marginBottom = "20px"
+    elt.prepend(p)
+  }

@@ -169,6 +169,23 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.bgroundSuccess {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.bgroundSuccess p{
+  color: green;
+  font-size: 20px;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
