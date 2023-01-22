@@ -43,6 +43,7 @@ function launchModal() {
 
 // close modal form
 function closeModal() {
+  removeErrors();
   modalbg.style.display = "none";
 }
 
@@ -137,9 +138,7 @@ document
       displayError(checkboxDiv,errorMessages.checkbox)
 		}
 		if (isValid) {
-      displaySuccess(main,"Merci ! Votre réservation a été reçue.")
-      closeModal();
-      validate();
+      displaySuccess(modalbg.children[0],"Merci pour votre inscription")
 		}
 	});
 
@@ -148,20 +147,31 @@ document
   }
 
   function displayError(elt,textError){
+    elt.children[2].style.borderColor = "red"
     let p = document.createElement("p");
     p.innerHTML = textError
     p.className = "error"
     p.style.color = "red"
-    p.style.fontSize = "15px"
+    p.style.fontSize = "11px"
     elt.appendChild(p)
   }
 
   function displaySuccess(elt, textSuccess){
+    elt.children[1].style.display = "none"
+    let btn = document.createElement("button");
+    btn.innerHTML = "Fermer"
+    btn.className = "modal-btn"
+    btn.style.fontSize = "15px"
+    btn.style.width = "auto"
+    btn.style.padding = "10px 60px"
+    btn.style.margin = "40px auto"
+    elt.prepend(btn)
     let p = document.createElement("p");
     p.innerHTML = textSuccess
     p.className = "success"
-    p.style.color = "green"
-    p.style.fontSize = "15px"
-    p.style.marginBottom = "20px"
+    p.style.fontSize = "40px"
+    p.style.fontWeight = "normal"
+    p.style.textAlign = "center"
+    p.style.margin = "300px auto"
     elt.prepend(p)
   }

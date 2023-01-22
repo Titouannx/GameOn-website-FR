@@ -17,7 +17,6 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -458,7 +457,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 120%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -479,6 +478,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit:cover;
 }
 .copyrights {
   color: #fe142f;
