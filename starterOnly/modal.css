@@ -18,7 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   margin: 0 auto;
-  max-width: 75%;
+  max-width: 85%;
 }
 
 p {
@@ -420,7 +420,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -494,7 +493,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1300px) {
   .hero-section {
     display: block;
     box-shadow: unset;
