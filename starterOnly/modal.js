@@ -75,10 +75,6 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 
 //FORM
-
-// DOM Form Elements
-const formSignup = document.getElementById("formSignup");
-
 //inputs validations functions
 
 //Check if name and firstname are valid

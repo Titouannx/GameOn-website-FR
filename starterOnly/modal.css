@@ -18,7 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   margin: 0 auto;
-  max-width: 85%;
+  max-width: 65%;
 }
 
 p {
@@ -542,3 +542,12 @@ footer {
   }
 }
 
+@keyframes modalclose {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
