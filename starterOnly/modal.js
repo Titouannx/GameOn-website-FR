@@ -43,11 +43,16 @@ const regexEmail = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
 const regexBirthdate = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
 const regexQuantity = /^[0-9]+$/;
 
+let SignUpDone = false;
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  modalbg.children[0].removeChild(document.querySelector(".success"))
-  modalbg.children[0].removeChild(document.querySelector(".closeSuccess"))
+  if (SignUpDone) {
+    modalbg.children[0].removeChild(document.querySelector(".success"))
+    modalbg.children[0].removeChild(document.querySelector(".closeSuccess"))
+    SignUpDone = false;
+  }
   //remove text from all imputs
   for (let i = 0; i < formData.length; i++) {
     formData[i].children[2].value = "";
@@ -81,13 +86,13 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 function firstValidation() {
 	let inputValue = document.getElementById("first").value;
   let regex = regexName;
-	if (regex.test(inputValue) && (inputValue !== null && inputValue.length > 2)) return true;
+	if (regex.test(inputValue) && (inputValue !== null && inputValue.length >= 2)) return true;
 }
 
 function lastValidation() {
   let inputValue = document.getElementById("last").value;
   let regex = regexName;
-	if (regex.test(inputValue) && (inputValue !== null && inputValue.length > 2)) return true;
+	if (regex.test(inputValue) && (inputValue !== null && inputValue.length >= 2)) return true;
 }
 
 function emailValidation() {
@@ -206,6 +211,7 @@ document
 		}
 		if (isValid) {
       displaySuccess(modalbg.children[0],"Merci pour votre inscription")
+      SignUpDone = true;
 		}
 	});
 
@@ -232,6 +238,7 @@ document
     btn.style.width = "auto"
     btn.style.padding = "10px 60px"
     btn.style.margin = "40px auto"
+    btn.style.border = "none"
     elt.prepend(btn)
 
     //on click, close modal
